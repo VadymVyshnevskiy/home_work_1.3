@@ -1,9 +1,11 @@
 #include <Arduino.h>
 
+#define PIN_OUT_GREEN 16
 #define PIN_OUT_RED 15
 #define PIN_OUT_BLUE 46
 
 void setup() {
+  pinMode(PIN_OUT_GREEN, OUTPUT);
   pinMode(PIN_OUT_RED, OUTPUT);
   pinMode(PIN_OUT_BLUE, OUTPUT);
 }
@@ -11,6 +13,10 @@ void setup() {
 // ---------Ordinary Twinkling--------------- 
 
 // void loop() {
+//   digitalWrite(PIN_OUT_GREEN, HIGH);
+//   delay(100);
+//   digitalWrite(PIN_OUT_GREEN, LOW);
+//   delay(100);
 //   digitalWrite(PIN_OUT_RED, HIGH);
 //   delay(100);
 //   digitalWrite(PIN_OUT_RED, LOW);
