@@ -2,7 +2,7 @@
 
 #define PIN_OUT_GREEN 16
 #define PIN_OUT_RED 15
-#define PIN_OUT_BLUE 46
+#define PIN_OUT_BLUE 17
 
 void setup() {
   pinMode(PIN_OUT_GREEN, OUTPUT);
@@ -13,10 +13,6 @@ void setup() {
 // ---------Ordinary Twinkling--------------- 
 
 // void loop() {
-//   digitalWrite(PIN_OUT_GREEN, HIGH);
-//   delay(100);
-//   digitalWrite(PIN_OUT_GREEN, LOW);
-//   delay(100);
 //   digitalWrite(PIN_OUT_RED, HIGH);
 //   delay(100);
 //   digitalWrite(PIN_OUT_RED, LOW);
@@ -34,21 +30,21 @@ void setup() {
 
 // ---------------Strobe---------------
 
-void strobe(uint8_t pin, int count, int speedMs) {
-  for (int i = 0; i < count; i++) {
-    digitalWrite(pin, HIGH);
-    delay(speedMs);
-    digitalWrite(pin, LOW);
-    delay(speedMs);
-  }
-}
+// void strobe(uint8_t pin, int count, int speedMs) {
+//   for (int i = 0; i < count; i++) {
+//     digitalWrite(pin, HIGH);
+//     delay(speedMs);
+//     digitalWrite(pin, LOW);
+//     delay(speedMs);
+//   }
+// }
 
-void loop() {
-  strobe(PIN_OUT_RED, 3, 50); 
-  delay(100);                  
-  strobe(PIN_OUT_BLUE, 3, 50);
-  delay(100);                  
-}
+// void loop() {
+//   strobe(PIN_OUT_RED, 3, 50); 
+//   delay(100);                  
+//   strobe(PIN_OUT_BLUE, 3, 50);
+//   delay(100);                  
+// }
 
 // ---------------Strobe---------------
 
@@ -56,18 +52,22 @@ void loop() {
 
 // ---------------Fade---------------
 
-// void loop() {
-//   for (int i = 0; i <= 255; i += 5) {
-//     analogWrite(PIN_OUT_RED, i);
-//     analogWrite(PIN_OUT_BLUE, 255 - i);
-//     delay(15);
-//   }
-  
-//   for (int i = 255; i >= 0; i -= 5) {
-//     analogWrite(PIN_OUT_RED, i);
-//     analogWrite(PIN_OUT_BLUE, 255 - i);
-//     delay(15);
-//   }
-// }
+void fade(uint8_t pin) {
+  for (int i = 0; i <= 255; i += 5) {
+    analogWrite(pin, i);
+    delay(15);
+  }
+
+  for (int i = 255; i >= 0; i -= 5) {
+    analogWrite(pin, i);
+    delay(15);
+  }
+}
+
+void loop() {
+  fade(PIN_OUT_GREEN);
+  fade(PIN_OUT_RED);
+  fade(PIN_OUT_BLUE);
+}
 
 // ---------------Fade---------------
